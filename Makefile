@@ -1,20 +1,23 @@
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
-SRC = 	
+SRC = ft_printf.c ft_utoa.c
 OBJS = $(SRC:.c=.o)
-NAME = printf.a
+LIBFT_PATH = ./libft/
+NAME = libftprintf.a
 
-all: $(NAME) 
+all: compilelibft $(NAME) 
 $(NAME) : $(OBJS) 
-		ar rcs $(NAME) $(OBJS) 
+		ar rcs $(NAME) $(OBJS) $(LIBFT_PATH)*.o
+compilelibft:
+	make -C libft
 c: all
-		$(CC) libft.a printf.a main.c && ./a.out
+		$(CC) $(NAME) main.c && ./a.out
 n:
 		norminette $(SRC)
 clean :
-		rm -f $(OBJS)
+		rm -f $(OBJS) $(LIBFT_PATH)*.o
 fclean : clean
-		rm -f $(NAME)
+		rm -f $(NAME) $(LIBFT_PATH)libft.a
 re : fclean
 		$(MAKE) all
 .PHONY: all,n, clean, fclean, re

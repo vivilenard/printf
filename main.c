@@ -6,14 +6,16 @@
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 19:49:43 by vlenard           #+#    #+#             */
-/*   Updated: 2022/11/08 20:16:51 by vlenard          ###   ########.fr       */
+/*   Updated: 2022/11/10 16:55:13 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "printf.h"
 
 int main ()
 {
-	ft_printf("d");
+	ft_printf("hallihallo\n%s %d  %c %i %% %u\nlalala\n", "lalilu", 7777, 'p', -2147483648, 4294967295);
+	//printf("aaaaa %%\n");
+	//write(1, "hi", 1);
 	return (0);
 }

@@ -1,9 +1,11 @@
-#ifndef LIBFT_H
-# define LIBFT_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
 #include <stdio.h>
 #include <stdarg.h>
+#include "./libft/libft.h"
 
-void ft_printf (const char *s, ...);
+int 		ft_printf (const char *s, ...);
+char		*ft_utoa (unsigned int n);
 
 #endif
