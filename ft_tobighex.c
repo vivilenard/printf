@@ -6,16 +6,16 @@
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 09:59:34 by vlenard           #+#    #+#             */
-/*   Updated: 2022/11/11 13:31:50 by vlenard          ###   ########.fr       */
+/*   Updated: 2022/11/11 15:02:47 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-char ft_converttocharacter(unsigned int n)
+char ft_converttocharacter(unsigned long int n)
 {
 	char			c;
-	unsigned int	i;
+	unsigned long int	i;
 
 	if (n >= 10)
 	{
@@ -38,7 +38,7 @@ char ft_converttocharacter(unsigned int n)
 
 int ft_countstr(int d)
 {
-	unsigned int	count;
+	unsigned long int	count;
 
 	count = 1;
 	while ((d / 16) > 0)
@@ -49,9 +49,9 @@ int ft_countstr(int d)
 	return (count);
 }
 
-char *ft_tobighex(unsigned int d)
+char *ft_tobighex(unsigned long int d)
 {
-	unsigned int	strlen;
+	unsigned long int	strlen;
 	char			*str;
 	
 	strlen = ft_countstr(d);

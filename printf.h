@@ -7,7 +7,7 @@
 
 int			ft_printf (const char *s, ...);
 char		*ft_utoa (unsigned int n);
-char		*ft_tobighex(unsigned int d);
+char		*ft_tobighex(unsigned long int d);
 int			ft_takearg(const char *s, int i, va_list args);
 
 #endif
