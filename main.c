@@ -3,18 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: karllenard <karllenard@student.42.fr>      +#+  +:+       +#+        */
+/*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 19:49:43 by vlenard           #+#    #+#             */
-/*   Updated: 2022/11/14 08:30:28 by karllenard       ###   ########.fr       */
+/*   Updated: 2022/11/14 16:06:23 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 int main ()
 {
 	int	*a;
+	int	x;
 	*a = 5;
 
 	unsigned int ad;
@@ -24,9 +25,16 @@ int main ()
 	//printf("aaaaa %%\n");
 	//write(1, "hi", 1);
 	//printf("%p\n", 9223372036854775807);
+	printf("Meine Funktion:\n");
+	x = ft_printf(" %p du\n", "a");
+	ft_printf("%d", x);
 
-	ft_printf("hier kommt der pointer %p xx			ln\n", a);
+	printf("Originalfunktion:\n");
+	x = printf(" %p du\n", "a");
+	printf("%d", x);
+
+	
 	//printf("TOPTR %s\n", ft_ultopointer(a));
-	printf("%p\n", a);
+	//printf("%p\n", a);
 	return (0);
 }

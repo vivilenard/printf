@@ -6,11 +6,11 @@
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 15:02:02 by vlenard           #+#    #+#             */
-/*   Updated: 2022/11/10 17:23:05 by vlenard          ###   ########.fr       */
+/*   Updated: 2022/11/14 11:24:14 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 int	*uft_allocation(char *s, size_t count, size_t n)
 {

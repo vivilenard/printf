@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tobighex.c                                      :+:      :+:    :+:   */
+/*   ft_tohex.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: karllenard <karllenard@student.42.fr>      +#+  +:+       +#+        */
+/*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 09:59:34 by vlenard           #+#    #+#             */
-/*   Updated: 2022/11/14 06:49:50 by karllenard       ###   ########.fr       */
+/*   Updated: 2022/11/14 15:57:44 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 char ft_converttocharacter(unsigned int n, char c)
 {
@@ -38,7 +38,7 @@ char ft_converttocharacter(unsigned int n, char c)
 	return (c);
 }
 
-int ft_countstr(int d)
+int ft_countstr(unsigned int d)
 {
 	unsigned int	count;
 

@@ -1,6 +1,6 @@
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
-SRC = ft_printf.c ft_utoa.c ft_tohex.c ft_takearg.c ft_topointer.c
+SRC = ft_printf.c ft_utoa.c ft_tohex.c ft_takearg.c ft_topointer.c ft_isXxps.c
 OBJS = $(SRC:.c=.o)
 LIBFT_PATH = ./libft/
 NAME = libftprintf.a

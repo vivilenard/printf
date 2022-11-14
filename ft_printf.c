@@ -3,53 +3,42 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: karllenard <karllenard@student.42.fr>      +#+  +:+       +#+        */
+/*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 19:57:46 by vlenard           #+#    #+#             */
-/*   Updated: 2022/11/14 08:28:35 by karllenard       ###   ########.fr       */
+/*   Updated: 2022/11/14 15:00:00 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 // c s d i p u x X %
-
-int ft_countargs(const char *s, int i)
+int ft_putandcountstr(char *str, int print_length)
 {
-	int	num_args;
-	
-	num_args = 0;
-	i = 0;
-	while (s[i])
-	{
-		if (((char *)s)[i] == '%')
-		{
-			if ((((char *)s)[i + 1]) == 'c' || (((char *)s)[i + 1]) == 's' || (((char *)s)[i + 1]) == 'd'
-				|| (((char *)s)[i + 1]) == 's' || (((char *)s)[i + 1]) == 'i' || (((char *)s)[i + 1]) == 'u'
-				|| (((char *)s)[i + 1]) == 'x' || (((char *)s)[i + 1]) == 'X' || (((char *)s)[i + 1]) == '%'
-				|| (((char *)s)[i + 1]) == 'p')
-			{
-				num_args++;
-				i++;
-			}
-		}
-		i++; 
-	}
-	return (num_args);
-}
+	int	i;
 
+	i = 0;
+	if (!str)
+		return (0);
+	while (str[i] != '\0')
+	{
+		write(1, &str[i], 1);
+		i++;
+		print_length++;
+	}
+	return (print_length);
+}
 int ft_printf (const char *s, ...)
 {
 	va_list args;
 	int	i;
 	int	start;
-	int num_args;
+	int	print_length;
 	char *subs;
 
 	i = 0;
 	start = 0;
-	num_args = ft_countargs(s, i);
-	printf("%i\n", num_args);
+	print_length = 0;
 	va_start(args, s);
 	while (i <= (int)ft_strlen(s))
 	{
@@ -58,20 +47,22 @@ int ft_printf (const char *s, ...)
 			subs = ft_substr(s, start, i - start);
 			if (subs)
 			{
-				ft_putstr_fd(subs, 1);
+				print_length = ft_putandcountstr(subs, print_length);
 				free (subs);
 			}
 			if (s[i] == '\0')
-				return (0);
-			if(ft_takearg(s, i, args) == 0)
-			{
-				return (0);
-			}
-			i = i + 2;
-			start = i;
+				return (print_length);
+			print_length = print_length + ft_takearg(s, i, args);
+			i++;
+			start = i + 1;
 		}
 		i++;
 	}
 	va_end(args);
-	return (0);
+	return (print_length);
 }
+
+			/*if(ft_takearg(s, i, args) == 0)
+			{
+				return (print_length);
+			} */
