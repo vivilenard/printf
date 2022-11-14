@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_takearg.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: karllenard <karllenard@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 13:49:29 by vlenard           #+#    #+#             */
-/*   Updated: 2022/11/11 14:43:41 by vlenard          ###   ########.fr       */
+/*   Updated: 2022/11/14 08:37:47 by karllenard       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,21 @@
 int ft_isX(va_list args)
 {
 	char *str;
-	str = ft_tobighex(va_arg(args, unsigned int));
+	str = ft_tohex(va_arg(args, unsigned int), 'X');
 	ft_putstr_fd(str, 1);
 	return (1);
 }
-int	ft_isx(va_list args, int i)
+int	ft_isx(va_list args)
 {
 	char *str;
-	str = ft_tobighex(va_arg(args, unsigned int));
-	while (str[i])
-	{
-		ft_tolower(str[i]);
-		i++;
-	}
+	str = ft_tohex(va_arg(args, unsigned int), 'x');
+	ft_putstr_fd(str, 1);
+	return (1);
+}
+int	ft_ispointer(va_list args)
+{
+	char *str;
+	str = ft_ultopointer(va_arg(args, unsigned long int));
 	ft_putstr_fd(str, 1);
 	return (1);
 }
@@ -62,18 +64,12 @@ int ft_ispercent(char ch)
 	write(1, &ch, 1);
 	return (1);
 }
-int	ft_ispointer(va_list args, int	i)
-{
-	write(1, "0", 1);
-	write(1, "x", 1);
-	ft_isx(args, i);
-	return (1);
-}
+
 int ft_takearg(const char *s, int i, va_list args)
 {
-	i++;
 	int ch;
 
+	i++;
 	ch = '%';
 	if (((char *)s)[i] == 'd' || ((char *)s)[i] == 'i')
 		return (ft_isdi(args, ch));
@@ -84,12 +80,12 @@ int ft_takearg(const char *s, int i, va_list args)
 	if (((char *)s)[i] == 'X')
 		return (ft_isX(args));
 	if (((char *)s)[i] == 'x')
-		return (ft_isx(args, i));
+		return (ft_isx(args));
 	if (((char *)s)[i] == 'u')
 		return (ft_isu(args, ch));
 	if (((char *)s)[i] == '%')
 		return (ft_ispercent(ch));
 	if (((char *)s)[i] == 'p')
-		return (ft_ispointer(args, 1));
+		return (ft_ispointer(args));
 	return(0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
+/*   By: karllenard <karllenard@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 19:57:46 by vlenard           #+#    #+#             */
-/*   Updated: 2022/11/11 14:04:02 by vlenard          ###   ########.fr       */
+/*   Updated: 2022/11/14 08:28:35 by karllenard       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ int ft_countargs(const char *s, int i)
 		{
 			if ((((char *)s)[i + 1]) == 'c' || (((char *)s)[i + 1]) == 's' || (((char *)s)[i + 1]) == 'd'
 				|| (((char *)s)[i + 1]) == 's' || (((char *)s)[i + 1]) == 'i' || (((char *)s)[i + 1]) == 'u'
-				|| (((char *)s)[i + 1]) == 'x' || (((char *)s)[i + 1]) == 'X' || (((char *)s)[i + 1]) == '%')
+				|| (((char *)s)[i + 1]) == 'x' || (((char *)s)[i + 1]) == 'X' || (((char *)s)[i + 1]) == '%'
+				|| (((char *)s)[i + 1]) == 'p')
 			{
 				num_args++;
 				i++;
@@ -48,7 +49,7 @@ int ft_printf (const char *s, ...)
 	i = 0;
 	start = 0;
 	num_args = ft_countargs(s, i);
-	//printf("%i\n", num_args);
+	printf("%i\n", num_args);
 	va_start(args, s);
 	while (i <= (int)ft_strlen(s))
 	{
