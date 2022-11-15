@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_topointer.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/15 10:38:27 by vlenard           #+#    #+#             */
+/*   Updated: 2022/11/15 10:39:05 by vlenard          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-int ft_counts(intptr n)
+int	ft_counts(t_intptr n)
 {
 	int	count;
 
@@ -16,14 +28,15 @@ int ft_counts(intptr n)
 char	ft_converttochar(int n)
 {
 	char	c;
-	int	i;
+	int		i;
+
 	c = 'a';
 	i = 10;
 	while (n >= 10)
 	{
 		if (n == i)
 		{
-			break;
+			break ;
 		}
 		c++;
 		i++;
@@ -34,20 +47,21 @@ char	ft_converttochar(int n)
 	}
 	return (c);
 }
-char    *ft_ultopointer(intptr n)
+
+char	*ft_ultopointer(t_intptr n)
 {
-	int     strlen;
-	char    *str;
+	int		strlen;
+	char	*str;
 
 	strlen = ft_counts(n) + 2;
-	str = (char*)malloc((strlen + 1) * sizeof(char));
+	str = (char *)malloc((strlen + 1) * sizeof(char));
 	if (!str)
 		return (NULL);
 	str[strlen] = '\0';
 	strlen--;
 	while (n >= 16 && strlen > 2)
 	{
-		str[strlen] = ft_converttochar(n%16);
+		str[strlen] = ft_converttochar(n % 16);
 		n = n / 16;
 		strlen--;
 	}

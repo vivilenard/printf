@@ -6,7 +6,7 @@
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 13:49:29 by vlenard           #+#    #+#             */
-/*   Updated: 2022/11/14 15:12:59 by vlenard          ###   ########.fr       */
+/*   Updated: 2022/11/15 10:36:21 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int	ft_isu(va_list args, int ch, int print_length)
 {
-	char *s;
+	char	*s;
+
 	ch = (unsigned int)ch;
 	ch = va_arg(args, unsigned int);
 	s = ft_utoa(ch);
@@ -25,8 +26,9 @@ int	ft_isu(va_list args, int ch, int print_length)
 
 int	ft_isdi(va_list args, int print_length)
 {
-	char *s;
-	int	n;
+	char	*s;
+	int		n;
+
 	n = va_arg(args, int);
 	s = ft_itoa(n);
 	print_length = ft_putandcountstr(s, print_length);
@@ -52,8 +54,8 @@ int	ft_ispercent(char ch, int print_length)
 int	ft_takearg(const char *s, int i, va_list args)
 {
 	int	ch;
-	int print_length;
-	
+	int	print_length;
+
 	print_length = 0;
 	i++;
 	ch = '%';
@@ -64,7 +66,7 @@ int	ft_takearg(const char *s, int i, va_list args)
 	if (((char *)s)[i] == 's')
 		return (ft_iss(args, print_length));
 	if (((char *)s)[i] == 'X')
-		return (ft_isX(args, print_length));
+		return (ft_isbigx(args, print_length));
 	if (((char *)s)[i] == 'x')
 		return (ft_isx(args, print_length));
 	if (((char *)s)[i] == 'u')

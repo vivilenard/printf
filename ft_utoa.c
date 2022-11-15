@@ -6,7 +6,7 @@
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 15:02:02 by vlenard           #+#    #+#             */
-/*   Updated: 2022/11/14 11:24:14 by vlenard          ###   ########.fr       */
+/*   Updated: 2022/11/15 10:40:00 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ char	*ft_utoa(unsigned int n)
 	char	*s;
 
 	count = 0;
-
 	if (n == 0)
 		count = 1;
 	count = ft_uhowmanydigits(n, count);

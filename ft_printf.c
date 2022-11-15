@@ -6,14 +6,13 @@
 /*   By: vlenard <vlenard@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 19:57:46 by vlenard           #+#    #+#             */
-/*   Updated: 2022/11/14 15:00:00 by vlenard          ###   ########.fr       */
+/*   Updated: 2022/11/15 10:31:18 by vlenard          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-// c s d i p u x X %
-int ft_putandcountstr(char *str, int print_length)
+int	ft_putandcountstr(char *str, int print_length)
 {
 	int	i;
 
@@ -28,18 +27,15 @@ int ft_putandcountstr(char *str, int print_length)
 	}
 	return (print_length);
 }
-int ft_printf (const char *s, ...)
+
+int	ft_lookforpercent(const char *s, va_list args, int print_length)
 {
-	va_list args;
-	int	i;
-	int	start;
-	int	print_length;
-	char *subs;
+	int		i;
+	int		start;
+	char	*subs;
 
 	i = 0;
 	start = 0;
-	print_length = 0;
-	va_start(args, s);
 	while (i <= (int)ft_strlen(s))
 	{
 		if (s[i] == '%' || s[i] == '\0')
@@ -58,11 +54,17 @@ int ft_printf (const char *s, ...)
 		}
 		i++;
 	}
-	va_end(args);
 	return (print_length);
 }
 
-			/*if(ft_takearg(s, i, args) == 0)
-			{
-				return (print_length);
-			} */
+int	ft_printf(const char *s, ...)
+{
+	va_list	args;
+	int		print_length;
+
+	print_length = 0;
+	va_start(args, s);
+	print_length = ft_lookforpercent(s, args, print_length);
+	va_end(args);
+	return (print_length);
+}
